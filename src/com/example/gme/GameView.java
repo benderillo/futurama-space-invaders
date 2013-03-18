@@ -127,6 +127,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		private static final int STOPPED = 0;
 		private static final int PAUSED = 1;
 		private static final int RUNNING = 2;
+		private long lastTimeStamp;
+		private long currentTimeStamp;
+
 
 		public RenderLoop(Game game, GameView view) {
 			mGame = game;
@@ -141,6 +144,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 		public void doStart() {
 			running = true;
 			state = RUNNING;
+			lastTimeStamp = System.currentTimeMillis();
 			start();
 		}
 		
@@ -164,10 +168,15 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 					
 					//we use getCanvas() to make renderer independent from the view implementation
 					if (mView.getCanvas() != null) {
-						
+						currentTimeStamp = System.currentTimeMillis();
+
+						mGame.update(currentTimeStamp - lastTimeStamp);
+
+						lastTimeStamp = currentTimeStamp;
+
 						//Let the game fill up our canvas 
 						mGame.drawFrame(mView.mCanvas);
-						
+
 						// Yeah, swapBuffers() like an old double-buffering approach :)
 						// again, we don't care how the View will handle that. 
 						// All we need to know is that the view will not try to render the canvas
@@ -175,14 +184,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 						mView.swapBuffers();
 					}
 				}
-
+/*
 				try {
 					sleep(33);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}
+*/			}
 		}
 	}
 }

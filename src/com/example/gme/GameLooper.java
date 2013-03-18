@@ -50,7 +50,7 @@ public class GameLooper extends Thread {
 				//Simply update the game's state in time
 				currentTimeStamp = System.currentTimeMillis();
 
-				mGame.update(currentTimeStamp - lastTimeStamp);
+				//mGame.update(currentTimeStamp - lastTimeStamp);
 
 				lastTimeStamp = currentTimeStamp;
 			}

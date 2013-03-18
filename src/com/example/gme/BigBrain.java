@@ -1,8 +1,11 @@
 package com.example.gme;
 
+import java.util.Random;
+
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Point;
 
 public class BigBrain extends LevelBoss {
 
@@ -14,6 +17,7 @@ public class BigBrain extends LevelBoss {
 	private long shiftTime = 3000;
 	private long elapsedXTime = 0;
 	private long shiftXTime = 1000;
+	private float[] bezier = new float[10];
 	
 	public BigBrain() {
 		this(100, 0, 200, 100, 8, Color.RED);
@@ -31,6 +35,14 @@ public class BigBrain extends LevelBoss {
 		
 		lifePower = 2000;
 		SCORE = 20000;
+		
+		
+	}
+
+	private Point getPathPos(long timeDelta) {
+		
+		
+		return null;
 	}
 
 	@Override
@@ -84,7 +96,7 @@ public class BigBrain extends LevelBoss {
 	public void update(long timeDelta) {
 		elapsedTime += timeDelta;
 		elapsedXTime += timeDelta;
-
+		
 		if (elapsedXTime >= shiftXTime) {
 			//if rand is greater than 0.5 then let's shift right.
 			if (Math.random() > 0.5) {

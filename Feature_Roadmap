@@ -1,0 +1,17 @@
+TODO:
+1. Fix background 
+2. Make half-reset for returning rest of the ships to the center and removing one life
+3. Add three lives and 3 continues
+4. Use bezier curves for the BOSS movements
+5. Add Level loading and initialization 
+
+Levels:
+1. Brains + Big brain
+2. Zoidberg attacks + big ship with claws
+3. Omicron Persei 8 attacks
+4. Space bees + big bee
+5. Worms of Fry + king worm
+6. Slyrm worms + big Mama
+7. Robot planet + old robots
+8. Balls + big ball
+9. To be continued... 

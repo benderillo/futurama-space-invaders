@@ -7,7 +7,7 @@ public class Bullet extends GameObject {
 
 	private static Bitmap bmp;
 	protected int damage = 100;
-	protected float speedX = 0;
+	protected int speedX = 0;
 
 	public Bullet() {
 		bmp = Bitmaps.getBitmap(Bitmaps.BULLET);
@@ -21,8 +21,9 @@ public class Bullet extends GameObject {
 	@Override
 	public void update(long timeDelta) {
 
-		int dy = Math.round(getFloatSpeed()*(float)timeDelta);
-		int dx = Math.round(getXSpeed()*timeDelta);
+		int dy = (int) ( (getSpeed() * timeDelta) / 10);
+
+		int dx = (int) (getXSpeed()*timeDelta);
 		
 		int top = getBoundRect().top += dy;
 		int bottom = getBoundRect().bottom += dy;
@@ -38,10 +39,10 @@ public class Bullet extends GameObject {
 
 	}
 	
-	private float getXSpeed() {
+	private int getXSpeed() {
 		return speedX;
 	}
 
-	public void setXSpeed(float value) { speedX = value; }
+	public void setXSpeed(int value) { speedX = value; }
 	public int getPower() { return damage; }
 }

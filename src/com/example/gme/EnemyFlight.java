@@ -26,7 +26,7 @@ public class EnemyFlight extends AirCraft {
 	}
 
 	public void setColor(int color) {
-		this.color = color;
+
 	}
 	
 	public int getScore() {return SCORE; }

@@ -103,6 +103,9 @@ public class SpaceInvadersGame extends Game {
 
 		makeNewHero();
 
+		heroLives = 2;
+		maxEnemyBullets = 2;
+
 		for (int i = 0; i < invaderRows; ++i) {
 			for (int j = 0; j < numInRow; ++j) {
 				invaders[i*numInRow + j]
@@ -117,27 +120,26 @@ public class SpaceInvadersGame extends Game {
 			}
 		}
 		
-		float speed = -(float)fieldHeight/ (float)2000;
+		float speed = -((float)fieldHeight/ (float)1500)*10;
 
 		for (int i = 0; i < maxBullets; ++i) {
 			bullets[i] = new Bullet();
 			bullets[i].setVisible(false);
-			bullets[i].setFloatSpeed(speed);
+			bullets[i].setSpeed(Math.round(speed));
 			bullets[i].setSpaceArea(0, 0, fieldWidth, fieldHeight);
 		}
 
-		speed = (float)fieldHeight/ (float)3000;
+		speed = (float)(fieldHeight/ (float)3000 )*10;
 
+		
 		for (int i = 0; i < maxEnemyBullets; ++i) {
 			enemyBullets[i] = new EnemyBullet();
 			enemyBullets[i].setVisible(false);
-			enemyBullets[i].setFloatSpeed(speed);
+			enemyBullets[i].setSpeed(Math.round(speed));
 			enemyBullets[i].setSpaceArea(invaderGap, invaderGap, fieldWidth - invaderGap, fieldHeight - invaderGap);
 		}
 
-		
 		activeInvaders = invadersCount;
-		score = 0;
 		scoreTable = new ScoreTable();
 
 		scoreTable.setBoundRect(invaderGap, fieldHeight - invaderGap*4, fieldWidth - invaderGap, fieldHeight - invaderGap);
